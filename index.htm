@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eBooks File Indexer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Global Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(45deg, #2b5876, #4e4376);
+      background-size: 400% 400%;
+      animation: backgroundMove 15s ease-in-out infinite;
+      color: white;
+      overflow-x: hidden;
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Header Styles */
+    header {
+      width: 100%;
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    header .logo {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #4285f4;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: logoAnimation 3s ease-in-out infinite alternate;
+    }
+
+    header .title {
+      font-size: 2.5rem;
+      text-align: center;
+      flex-grow: 1;
+      font-weight: 500;
+      animation: titleAnimation 3s ease-in-out infinite alternate;
+    }
+
+    header .contact-us {
+      font-size: 1.1rem;
+      color: #ffeb3b;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      font-weight: 600;
+      animation: contactAnimation 3s ease-in-out infinite alternate;
+    }
+
+    header .contact-us:hover {
+      color: #fff;
+    }
+
+    /* Main Content */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+      padding: 20px;
+     
+      background: rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+    }
+
+    main h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 700;
+      animation: slideIn 1s ease-out;
+      letter-spacing: 1px;
+    }
+
+    /* Search Box */
+    .search-box {
+      display: flex;
+      align-items: space-around;
+      justify-content: space-around;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 30px;
+      width: 80%;
+      max-width: 600px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: searchBoxTheme 2s ease-out infinite alternate;
+    }
+
+    .search-box input {
+      border: none;
+      padding: 12px;
+      font-size: 1.2rem;
+      border-radius: 20px;
+      width: 80%;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #f3f3f3;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      animation: inputBoxFocus 3s ease-in-out infinite alternate;
+    }
+
+    .search-box input:focus {
+      background-color: #e0e0e0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      align-self: center;
+    }
+
+    .search-box button {
+      padding: 10px 20px;
+      
+      margin-left: 10px;
+      background-color: #4285f4;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-box button:hover {
+      background-color: #ffffff;
+      border: 0.1px solid #357ae8;
+      color: #357ae8;
+    }
+
+    /* Footer */
+    .powered-by {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #bbb;
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); }
+      to { transform: translateY(0); }
+    }
+
+    @keyframes logoAnimation {
+      0% {
+        transform: translateX(-20px);
+      }
+      100% {
+        transform: translateX(20px);
+      }
+    }
+
+    @keyframes titleAnimation {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes contactAnimation {
+      0% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(10px);
+      }
+    }
+
+    @keyframes searchBoxTheme {
+      0% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(5deg);
+      }
+    }
+
+    @keyframes inputBoxFocus {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Background Moving Animation */
+    @keyframes backgroundMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+      }
+      header .logo {
+        font-size: 1.5rem;
+      }
+      header .title {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      header .contact-us {
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+      main h1 {
+        font-size: 2.5rem;
+      }
+      .search-box {
+        flex-direction: column;
+        width: 100%;
+      }
+      .search-box input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .search-box button {
+        width: 100%;
+        font-size: 1.1rem;
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header .logo {
+        font-size: 1.2rem;
+      }
+      header .title {
+        font-size: 1.5rem;
+      }
+      main h1 {
+        font-size: 2rem;
+      }
+      .search-box input {
+        font-size: 1.1rem;
+      }
+      .search-box button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">eBooks</div>
+    <div class="title">File Indexer</div>
+    <div class="contact-us" onclick="contactUs()">Contact Us</div>
+  </header>
+
+  <!-- Main Content Section -->
+  <main>
+    <h1>Search for eBooks</h1>
+    <div class="search-box">
+      <input type="text" id="searchQuery" placeholder="Search for educational eBooks..." onkeypress="if(event.key === 'Enter'){searchResource();}">
+      <button onclick="searchResource()">Search</button>
+    </div>
+    <p class="powered-by">Powered by Google</p>
+  </main>
+
+  <!-- JavaScript for functionality -->
+  <script>
+    function searchResource() {
+      const query = document.getElementById('searchQuery').value.trim();
+      if (!query) {
+        alert('Please enter a search query');
+        return;
+      }
+
+      // Add common eBook file types (PDF, ePub, Mobi, Azw3)
+      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query + ' filetype:pdf OR filetype:epub OR filetype:mobi OR filetype:azw3')}`;
+      window.open(searchUrl, '_blank');
+    }
+
+    function contactUs() {
+      alert('For inquiries, contact us at contact@ebooks.com');
+    }
+  </script>
+
+</body>
+</html>
